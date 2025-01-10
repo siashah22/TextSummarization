@@ -16,13 +16,14 @@ This project demonstrates a Python-based text summarization tool using Natural L
 
 Libraries Used in the Project:
 
-1. NLTK (Natural Language Toolkit): A comprehensive library for natural language processing tasks.
+1.NLTK (Natural Language Toolkit): A comprehensive library for natural language processing tasks.
 
 2.collections.Counter: A Python standard library for counting the occurrences of elements in a collection.Used to compute word frequencies.
 
 3.heapq: A Python standard library for working with heaps (priority queues). Used to efficiently retrieve the highest-scoring sentences for the summary.
 
 Key Features:
+
 1.Tokenization: Breaks the text into sentences and words.
 
 2.Stopword Removal: Removes common, insignificant words (e.g., "and," "the") to focus on meaningful terms.
