@@ -22,3 +22,7 @@ Key Features:
 3.Word Frequency Analysis: Assigns importance to words based on their frequency in the text.
 4.Sentence Scoring: Scores sentences based on the cumulative importance of words they contain.
 5.Summary Extraction: Selects top-scoring sentences to generate the summary, ensuring brevity while retaining context.
+
+Output :
+![OUTPUT_TST_1](https://github.com/user-attachments/assets/6b0d76e8-2ce1-40e2-ad15-8c6008eddbf4)
+![OUTPUT_TST_2](https://github.com/user-attachments/assets/825d976e-6856-4763-a599-c96a48a1c0fa)
