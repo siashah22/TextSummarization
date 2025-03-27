@@ -1,15 +1,4 @@
 # TextSummarization
-**COMPANY** : CODTECH IT SOLUTIONS
-
-**NAME** : SIA SHAH
-
-**INTERN ID** : CT08JOP
-
-**DOMAIN NAME** : ARTIFICIAL INTELLIGENCE 
-
-**BATCH DURATION** : JANUARY 5th,2025 to FEBRUARY 5th,2025
-
-**MENTOR NAME** : NEELA SANTOSH KUMAR
 
 # DESCRIPTION OF THE PROJECT :
 This project demonstrates a Python-based text summarization tool using Natural Language Processing (NLP) techniques. The tool accepts lengthy articles or textual content as input and generates a concise summary by identifying and retaining the most relevant sentences.
@@ -34,6 +23,4 @@ Key Features:
 
 5.Summary Extraction: Selects top-scoring sentences to generate the summary, ensuring brevity while retaining context.
 
-Output :
-![OUTPUT_TST_1](https://github.com/user-attachments/assets/6b0d76e8-2ce1-40e2-ad15-8c6008eddbf4)
-![OUTPUT_TST_2](https://github.com/user-attachments/assets/825d976e-6856-4763-a599-c96a48a1c0fa)
+
