@@ -23,4 +23,8 @@ Key Features:
 
 5.Summary Extraction: Selects top-scoring sentences to generate the summary, ensuring brevity while retaining context.
 
+# OUTPUT
+![Image](https://github.com/user-attachments/assets/8865050b-c665-49cf-b850-9d126d070ea1)
+![Image](https://github.com/user-attachments/assets/0fa8d49d-29bc-4d2f-b761-69a3debbc58f)
+
 
