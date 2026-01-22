@@ -10,52 +10,63 @@ from nltk.corpus import stopwords
 from collections import Counter
 import heapq
 
-def summarize_text(text, summary_ratio=0.4):
-    """
-    Summarize the input text using NLP techniques.
+# Ensure required NLTK resources are available
+nltk.download('punkt')
+nltk.download('stopwords')
 
-    Args:
-        text (str): The text to summarize.
-        summary_ratio (float): Proportion of sentences to retain in the summary.
+def summarize_text(text, summary_ratio=0.4, language='english'):
 
-    Returns:
-        str: The summarized text.
-    """
-    # Tokenize the text into sentences
+    # Sentence tokenization
     sentences = sent_tokenize(text)
-    
-    # Tokenize the text into words and remove stopwords
+
+    # Early exit for very short text (efficiency optimization)
+    if len(sentences) <= 2:
+        return text
+
+    # Word tokenization and preprocessing
     words = word_tokenize(text.lower())
-    stop_words = set(stopwords.words('english'))
+    stop_words = set(stopwords.words(language))
     filtered_words = [word for word in words if word.isalnum() and word not in stop_words]
-    
-    # Calculate word frequencies
+
+    # Word frequency calculation
     word_frequencies = Counter(filtered_words)
     max_frequency = max(word_frequencies.values(), default=1)
+
+    # Normalize word frequencies
     for word in word_frequencies:
         word_frequencies[word] /= max_frequency
 
-    # Score sentences based on word frequencies
+    # Sentence scoring with length normalization
     sentence_scores = {}
     for sentence in sentences:
-        for word in word_tokenize(sentence.lower()):
+        sentence_words = word_tokenize(sentence.lower())
+        for word in sentence_words:
             if word in word_frequencies:
-                if sentence not in sentence_scores:
-                    sentence_scores[sentence] = word_frequencies[word]
-                else:
-                    sentence_scores[sentence] += word_frequencies[word]
+                sentence_scores[sentence] = sentence_scores.get(sentence, 0) + word_frequencies[word]
 
-    # Select the top sentences based on the summary ratio
-    summary_length = int(len(sentences) * summary_ratio)
-    summary_length = max(1, summary_length)  # Ensure at least one sentence
+        # Normalize by sentence length to avoid bias
+        if sentence in sentence_scores:
+            sentence_scores[sentence] /= len(sentence_words)
+
+    # Determine summary length
+    summary_length = max(1, int(len(sentences) * summary_ratio))
+
+    # Efficient Top-K sentence selection
     summarized_sentences = heapq.nlargest(summary_length, sentence_scores, key=sentence_scores.get)
 
-    # Combine the selected sentences into a summary
+    # Preserve original sentence order
+    summarized_sentences = sorted(summarized_sentences, key=lambda s: sentences.index(s))
+
+    # Generate final summary
     summary = ' '.join(summarized_sentences)
     return summary
 
-input_text = input("Enter the text to be summarized : ")
-print("\nSummarized Text:\n", summarize_text(input_text))
+
+if __name__ == "__main__":
+    input_text = input("Enter the text to be summarized:\n")
+    print("\nSummarized Text:\n")
+    print(summarize_text(input_text))
+
 
 
 
